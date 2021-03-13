@@ -22,7 +22,18 @@ namespace Buffet.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            // 1º Forma de enviar dados para a view
+            ViewBag.InformacaoQualquer = "Informação Qualquer";
+            
+            // 2º Forma de enviar dados para a view
+            ViewData["informacao"] = "Outra informação";
+            
+            // 3º Forma de enviar dados para a view
+            var viewmodel = new IndexViewModel();
+            viewmodel.InformacaoQualquer = "Informação pela View Model";
+            viewmodel.Titulo = "Título qualquer";
+            
+            return View(viewmodel);
         }
 
         public IActionResult Privacy()
