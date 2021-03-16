@@ -53,7 +53,8 @@ namespace Buffet.Controllers
                 viewModel.Clientes.Add(new Cliente
                 {
                     Nome = clienteEntity.Nome,
-                    DataDeNascimento = clienteEntity.DataDeNascimento.ToShortDateString()
+                    DataDeNascimento = clienteEntity.DataDeNascimento.ToShortDateString(),
+                    Idade = clienteEntity.Idade
                 });
             }
             

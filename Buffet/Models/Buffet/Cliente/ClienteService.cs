@@ -13,14 +13,16 @@ namespace Buffet.Models.Buffet.Cliente
             {
                 Id = 1,
                 Nome = "Leonardo",
-                DataDeNascimento = new DateTime(1986, 12, 1)
+                DataDeNascimento = new DateTime(1986, 12, 1),
+                Idade = 34
             });
             
             listaDeClientes.Add(new ClienteEntity
             {
                 Id = 2,
                 Nome = "José",
-                DataDeNascimento = new DateTime(1977, 09,  25)
+                DataDeNascimento = new DateTime(1977, 09,  25),
+                Idade = 50
             });
 
             return listaDeClientes;

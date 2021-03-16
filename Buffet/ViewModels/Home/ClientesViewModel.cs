@@ -16,5 +16,6 @@ namespace Buffet.ViewModels.Home
     {
         public string Nome { get; set; }
         public string DataDeNascimento { get; set; }
+        public int Idade { get; set; }
     }
 }
