@@ -1,4 +1,8 @@
-﻿namespace Buffet.Models.Buffet
+﻿using System.Collections;
+using System.Collections.Generic;
+using Buffet.Models.Buffet.Cliente;
+
+namespace Buffet.Models.Buffet
 {
     public class StatusConvidado
     {

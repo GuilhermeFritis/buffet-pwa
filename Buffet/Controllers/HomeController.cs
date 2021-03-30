@@ -17,36 +17,18 @@ namespace Buffet.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-        private readonly DatabaseContext _databaseContext;
+        private readonly ClienteService _clienteService;
 
         public HomeController(
             ILogger<HomeController> logger,
-            DatabaseContext databaseContext
-        )
-        {
+            ClienteService clienteService
+        ){
             _logger = logger;
-            _databaseContext = databaseContext;
+            _clienteService = clienteService;
         }
 
         public IActionResult Index()
-        {
-            var novoCliente = new ClienteEntity
-            {
-                Nome = "José",
-                DataDeNascimento = new DateTime(),
-                Idade = 40
-            };
-            _databaseContext.Clientes.Add(novoCliente);
-
-            _databaseContext.SaveChanges();
-            
-            var todosClientes = _databaseContext.Clientes.ToList();
-
-            foreach (ClienteEntity cliente in todosClientes) {
-                Console.WriteLine(cliente.Nome);
-            }
-            
-            
+        {      
             // 1º Forma de enviar dados para a view
             ViewBag.InformacaoQualquer = "Informação Qualquer";
             
@@ -63,32 +45,23 @@ namespace Buffet.Controllers
                 Idade = 34
             };
             
+            
+            // Trazer lista de clientes do banco de dados
+            var clientesDoBanco = _clienteService.ObterClientes();
+            foreach (var clienteEntity in clientesDoBanco) {
+                viewmodel.Clientes.Add(new Cliente()
+                {
+                    Id = clienteEntity.Id.ToString(),
+                    Nome = clienteEntity.Nome
+                });
+            }
+
             return View(viewmodel);
         }
 
         public IActionResult Privacy()
         {
             return View();
-        }
-        
-        public IActionResult Clientes()
-        {
-            // Trazer lista de entidade clientes do serviço de clientes (model)
-            var clienteService = new ClienteService();
-            var listaDeClientes = clienteService.ObterClientes();
-
-            // Criar e popular a viewmodel
-            var viewModel = new ClientesViewModel();
-            foreach (ClienteEntity clienteEntity in listaDeClientes) {
-                viewModel.Clientes.Add(new Cliente
-                {
-                    Nome = clienteEntity.Nome,
-                    DataDeNascimento = clienteEntity.DataDeNascimento.ToShortDateString(),
-                    Idade = clienteEntity.Idade
-                });
-            }
-            
-            return View(viewModel);
         }
 
         public IActionResult StatusEvento()

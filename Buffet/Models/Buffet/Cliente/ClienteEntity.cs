@@ -9,7 +9,7 @@ namespace Buffet.Models.Buffet.Cliente
         [Required] public string Nome { get; set; }
         public DateTime DataDeNascimento { get; set; }
         public int Idade { get; set; }
-
+        
         public string Sobrenome { get; set; }
     }
 }
