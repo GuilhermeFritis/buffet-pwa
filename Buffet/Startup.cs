@@ -57,7 +57,8 @@ namespace Buffet
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{param?}");
+                    pattern: "{controller=Acesso}/{action=Login}/{param?}"
+                );
             });
         }
     }
