@@ -8,21 +8,25 @@ namespace Buffet.Controllers
 {
     public class AcessoController : Controller
     {
-        public AcessoController()
+        private readonly ClienteService _clienteService;
+
+        public AcessoController(ClienteService clienteService)
         {
-            
+            _clienteService = clienteService;
         }
 
         public IActionResult Login()
         {
+            _clienteService.ObterClientes();
+            
             return View();
         }
-        
+
         public IActionResult RecuperarConta()
         {
             return View();
         }
-        
+
         public IActionResult Cadastrar()
         {
             return View();
