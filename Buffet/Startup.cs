@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Buffet.Data;
+using Buffet.Models.Acesso;
 using Buffet.Models.Buffet.Cliente;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -32,6 +34,18 @@ namespace Buffet
                 options.UseMySql(Configuration.GetConnectionString("BuffetDb"))
             );
 
+            // Configurar o Controle de Acesso de Usuários
+            services.AddIdentity<Usuario, Papel>(options =>
+            {
+                options.User.RequireUniqueEmail = true;
+                options.Password.RequiredLength = 8;
+            }).AddEntityFrameworkStores<DatabaseContext>();
+
+            services.ConfigureApplicationCookie(options =>
+            {
+                options.LoginPath = "/Acesso/Login";
+            });
+            
             services.AddTransient<ClienteService>();
         }
 
@@ -49,10 +63,12 @@ namespace Buffet
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 
+            
             app.UseRouting();
-
+            
+            app.UseAuthentication();
             app.UseAuthorization();
-
+            
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
