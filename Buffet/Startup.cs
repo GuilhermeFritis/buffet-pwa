@@ -46,6 +46,7 @@ namespace Buffet
                 options.LoginPath = "/Acesso/Login";
             });
             
+            services.AddTransient<AcessoService>();
             services.AddTransient<ClienteService>();
         }
 

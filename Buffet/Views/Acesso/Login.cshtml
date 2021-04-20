@@ -1,13 +1,37 @@
-﻿@{
+﻿@model Buffet.ViewModels.Acesso.GenericViewModel;
+
+@{
     ViewData["Title"] = "Login";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Login</h1>
-    
-    <a asp-controller="Admin" asp-action="Supervisao">Logar</a>
-    <br>
-    <a asp-controller="Acesso" asp-action="RecuperarConta">Recuperar Conta</a>
-    <br>
-    <a asp-controller="Acesso" asp-action="Cadastrar">Cadastrar</a>
+<div class="container">
+    @if (Model.Msg != "" && Model.Msg != null)
+    {
+        <div class="alert alert-dark alert-dismissible fade show" role="alert">
+            <p>@Model.Msg</p>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    }
+    <div class="card card-login">
+        <div class="card-header">
+            <h1>Faça Login</h1>
+        </div>
+        <div class="card-body">
+            <form asp-controller="Acesso" asp-action="RealizaLogin" method="post">
+                <div class="form-group">
+                    <label class="control-label" for="email">Email:</label>
+                    <input class="form-control" type="text" id="email" name="email" placeholder="Digite seu login" required/>
+                </div>
+                <div class="form-group">
+                    <label class="control-label" for="senha">Senha:</label>
+                    <input class="form-control" type="password" id="senha" name="senha" placeholder="Digite sua senha" required/>
+                </div>
+                <button type="submit" class="btn btn-primary">Entrar</button>
+            </form>
+            <a class="text-danger" asp-area="" asp-controller="Acesso" asp-action="RecuperarConta">Recuperar Conta</a>
+            <p>Ou clique <a asp-area="" asp-controller="Acesso" asp-action="Cadastrar">aqui</a> para realizar seu cadastro!</p>
+        </div>
+    </div>
 </div>

@@ -5,6 +5,10 @@ namespace Buffet.Models.Acesso
 {
     public class Usuario : IdentityUser<Guid>
     {
-        //public string Apelido { get; set; }
+        public string Nome { get; set; }
+
+        public Usuario()
+        {
+        }
     }
 }

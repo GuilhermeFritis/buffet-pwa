@@ -1,11 +1,46 @@
-﻿@{
+﻿@model Buffet.ViewModels.Acesso.GenericViewModel;
+
+@{
     ViewData["Title"] = "Cadastrar";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Cadastrar</h1>
-    
-    <a asp-controller="Acesso" asp-action="Login">Voltar ao login</a>
-    <br>
-    <a asp-controller="Acesso" asp-action="RecuperarConta">Recuperar Conta</a>
+<div class="container">
+    @if (Model.Msg != "" && Model.Msg != null)
+    {
+        <div class="alert alert-dark alert-dismissible fade show" role="alert">
+            <p>@Model.Msg</p>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    }
+    <div class="card mt-3">
+        <div class="card-header">
+            <h1>Cadastrar Usuário</h1>
+        </div>
+        <form asp-controller="Acesso" asp-action="RealizaCadastro" method="post">
+            <div class="card-body">
+                <div class="form-group">
+                    <label class="control-label" for="nome">Nome:</label>
+                    <input class="form-control" type="text" id="nome" name="nome" placeholder="Digite seu nome" required/>
+                </div>
+                <div class="form-group">
+                    <label class="control-label" for="email">Email:</label>
+                    <input class="form-control" type="email" id="email" name="email" placeholder="Digite seu email" required/>
+                </div>
+                <div class="form-group">
+                    <label class="control-label" for="senha1">Senha:</label>
+                    <input class="form-control" type="password" id="senha" name="senha" placeholder="Digite sua senha" required/>
+                </div>
+                <div class="form-group">
+                    <label class="control-label" for="senha1">Redigite a senha:</label>
+                    <input class="form-control" type="password" id="senha1" name="senha_rep" placeholder="Digite sua senha novamente" required/>
+                </div>
+            </div>
+            <div class="card-footer">
+                <a class="btn btn-danger" asp-controller="Acesso" asp-action="Login">Voltar</a>
+                <button type="submit" class="btn btn-primary pull-right">Cadastrar Usuário</button>
+            </div>
+        </form>
+    </div>
 </div>

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using Buffet.Models;
+using Buffet.ViewModels.Acesso;
 using Buffet.ViewModels.Home;
 
 namespace Buffet.Controllers.Admin
@@ -13,9 +14,11 @@ namespace Buffet.Controllers.Admin
         {
         }
 
-        public IActionResult Index()
+        public IActionResult PainelDoUsuario()
         {
-            return View();
+            var view = new GenericViewModel(TempData["msg_erro"]==null?"":(string) TempData["msg_erro"]);
+            
+            return View(view);
         }
     }
 }

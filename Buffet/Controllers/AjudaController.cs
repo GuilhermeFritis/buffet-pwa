@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Buffet.Controllers
+namespace AromaBuffet.Controllers
 {
     public class AjudaController : Controller
     {
         public AjudaController(){
         }
 
-        public IActionResult Index()
+        public IActionResult Ajuda()
         {   
             return View();
         }

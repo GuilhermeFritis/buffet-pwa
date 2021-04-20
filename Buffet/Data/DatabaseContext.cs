@@ -12,6 +12,8 @@ namespace Buffet.Data
         public DbSet<ClienteEntity> Clientes { get; set; }
         public DbSet<EventoEntity> Eventos { get; set; }
         
+        public DbSet<Usuario> Usuario { get; set; }
+        
         public DatabaseContext(DbContextOptions<DatabaseContext> options)
             :base(options)
         {

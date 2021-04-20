@@ -1,0 +1,35 @@
+﻿@using System.Collections.Specialized
+@model Buffet.ViewModels.Acesso.GenericViewModel;
+@{
+    ViewData["Title"] = "Painel do Usuário";
+}
+
+
+@section Toolbar{
+    @if (Model.Msg != "" && Model.Msg != null)
+    {
+        <div class="alert alert-dark alert-dismissible fade show" role="alert">
+            <p>@Model.Msg</p>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    }
+    <div class="btn-group mr-2">
+        <button type="button" class="btn btn-sm btn-outline-secondary">Botão 01</button>
+        <button type="button" class="btn btn-sm btn-outline-secondary">Botão 02</button>
+    </div>
+    <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle">
+        
+        Botão 03
+    </button>
+}
+
+<div class="col-md-9 col-xs-12">
+    <p>
+        Lorem ipsum mattis duis suspendisse platea odio per posuere ante semper lectus, proin etiam quam etiam elementum curae eleifend aliquet quisque ornare, feugiat fusce congue dolor quis volutpat ut elementum fringilla fermentum.
+        nostra gravida tristique elit per dapibus ipsum purus habitasse egestas, accumsan vulputate varius auctor morbi in cursus.
+        fusce quisque phasellus imperdiet iaculis fusce velit aptent, felis convallis neque etiam torquent inceptos mollis condimentum, habitasse lectus morbi cubilia fringilla integer.
+        magna eu gravida facilisis dui nisi tortor ut nisl tortor dui, nam diam rhoncus scelerisque netus lorem eros litora quam viverra ligula, enim fames libero integer congue odio erat a odio.
+    </p>
+    </div>

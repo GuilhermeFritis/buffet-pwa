@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Buffet.Controllers
+namespace AromaBuffet.Controllers
 {
     public class InformacoesLegaisController : Controller
     {
